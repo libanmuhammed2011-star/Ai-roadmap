@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AI Mastery Roadmap — Week 1 to 5 | Teen Tech Entrepreneur</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#04040f;--bg1:#07071c;--bg2:#0b0b22;--bg3:#10102a;--bg4:#161630;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --text:#dde4f0;--sub:#8892a4;--muted:#4a5568;
+  --w1:#00e5c3;--w2:#ff2d78;--w3:#8b5cf6;--w4:#f59e0b;--w5:#22d3ee;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;cursor:default}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:#04040f}
+::-webkit-scrollbar-thumb{background:#1e1e40;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#2e2e58}
+
+/* ── ANIMATED BG ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 800px 400px at 10% 20%, rgba(0,229,195,0.04) 0%,transparent 60%),
+    radial-gradient(ellipse 600px 400px at 90% 80%, rgba(139,92,246,0.04) 0%,transparent 60%),
+    radial-gradient(ellipse 400px 300px at 50% 50%, rgba(255,45,120,0.02) 0%,transparent 60%);
+}
+
+/* ── TOP HEADER ── */
+#hdr{
+  position:sticky;top:0;z-index:100;
+  background:rgba(4,4,15,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;height:56px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.hdr-brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.hdr-dot{width:8px;height:8px;border-radius:50%;background:var(--w1);
+  animation:blink 2s infinite;box-shadow:0 0 8px var(--w1)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hdr-title{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;
+  background:linear-gradient(90deg,var(--w1),var(--w2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  white-space:nowrap}
+.hdr-progress{display:flex;align-items:center;gap:6px;flex:1;max-width:400px}
+.hdr-prog-item{flex:1;position:relative}
+.hdr-prog-bar{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.hdr-prog-fill{height:100%;border-radius:2px;transition:width .6s ease}
+.hdr-prog-label{font-size:9px;color:var(--muted);margin-bottom:3px;letter-spacing:1px;font-family:'JetBrains Mono',monospace}
+.hdr-badge{font-size:10px;color:var(--sub);white-space:nowrap;font-family:'JetBrains Mono',monospace;
+  background:var(--bg3);padding:4px 10px;border-radius:20px;border:1px solid var(--border)}
+
+/* ── HERO BANNER ── */
+#hero{
+  padding:40px 24px 32px;position:relative;overflow:hidden;z-index:1;
+  border-bottom:1px solid var(--border);
+}
+#hero::after{
+  content:'AI';position:absolute;right:-20px;top:-20px;
+  font-family:'Syne',sans-serif;font-size:200px;font-weight:800;
+  color:rgba(255,255,255,0.015);pointer-events:none;line-height:1;z-index:0;
+}
+.hero-eyebrow{font-size:11px;letter-spacing:4px;color:var(--w1);font-family:'JetBrains Mono',monospace;
+  font-weight:600;margin-bottom:12px;text-transform:uppercase}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(22px,4vw,42px);font-weight:800;
+  line-height:1.1;margin-bottom:12px;position:relative;z-index:1}
+.hero-h1 span{
+  background:linear-gradient(135deg,#fff 0%,var(--w1) 40%,var(--w2) 70%,var(--w5) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:14px;color:var(--sub);max-width:680px;line-height:1.7;margin-bottom:24px;position:relative;z-index:1}
+.hero-stats{display:flex;gap:16px;flex-wrap:wrap;position:relative;z-index:1}
+.hstat{padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--bg3);
+  font-size:12px;color:var(--sub);display:flex;align-items:center;gap:8px}
+.hstat-val{font-weight:700;color:var(--text);font-size:13px}
+
+/* ── LAYOUT ── */
+#wrap{display:flex;position:relative;z-index:1}
+
+/* ── LEFT NAV ── */
+#nav{
+  width:220px;min-width:220px;flex-shrink:0;
+  background:var(--bg1);border-right:1px solid var(--border);
+  position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;
+  padding:12px 0;
+}
+.nav-week{margin-bottom:2px}
+.nav-week-btn{
+  width:100%;padding:12px 16px;background:transparent;
+  border:none;border-left:3px solid transparent;
+  text-align:left;cursor:pointer;display:flex;align-items:center;gap:10px;
+  transition:all .2s;color:var(--muted);font-family:'Outfit',sans-serif;
+}
+.nav-week-btn:hover{color:var(--text)}
+.nav-week-btn.active{font-weight:600}
+.nav-wicon{font-size:16px;flex-shrink:0}
+.nav-wlabel{font-size:9px;letter-spacing:1.5px;opacity:.7;margin-bottom:2px;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+.nav-wtitle{font-size:11px;line-height:1.3}
+.nav-topics{padding:2px 0 6px 0}
+.nav-topic-btn{
+  padding:9px 16px 9px 18px;margin-left:14px;cursor:pointer;
+  font-size:11px;color:var(--muted);display:flex;align-items:center;gap:7px;
+  border-left:2px solid transparent;border-radius:0 6px 6px 0;
+  transition:all .2s;font-family:'Outfit',sans-serif;
+}
+.nav-topic-btn:hover{color:var(--text);transform:translateX(3px)}
+.nav-topic-btn.active{color:var(--text);font-weight:500}
+.nav-divider{height:1px;background:var(--border);margin:8px 12px}
+.nav-glossary-sec{padding:12px 14px 0}
+.nav-gls-title{font-size:9px;letter-spacing:2px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:8px;text-transform:uppercase}
+.gls-chip{padding:6px 10px;background:var(--bg3);border-radius:6px;margin-bottom:5px;border:1px solid var(--border)}
+.gls-term{font-size:10px;font-weight:700;color:#7dd3fc;font-family:'JetBrains Mono',monospace;margin-bottom:2px}
+.gls-def{font-size:9px;color:var(--muted);line-height:1.5}
+
+/* ── MAIN CONTENT ── */
+#main{flex:1;padding:24px;overflow-y:auto;min-width:0}
+
+/* Topic Card */
+.topic-card{
+  border-radius:14px;padding:24px;margin-bottom:22px;position:relative;overflow:hidden;
+  transition:all .3s;
+}
+.tc-bg-icon{
+  position:absolute;right:-10px;top:-15px;font-size:90px;opacity:.05;
+  pointer-events:none;line-height:1;
+}
+.tc-breadcrumb{font-size:10px;letter-spacing:2px;font-family:'JetBrains Mono',monospace;
+  font-weight:600;margin-bottom:8px;text-transform:uppercase}
+.tc-title{font-family:'Syne',sans-serif;font-size:clamp(18px,2.5vw,26px);font-weight:800;
+  color:#fff;margin-bottom:10px;line-height:1.2}
+.tc-concept{color:var(--sub);font-size:13.5px;line-height:1.75;max-width:720px}
+
+/* Tabs */
+.tabs-row{display:flex;gap:5px;margin-bottom:18px;overflow-x:auto;padding-bottom:2px;flex-wrap:wrap}
+.tab-btn{
+  padding:7px 13px;border-radius:7px;border:1px solid var(--border);
+  background:var(--bg2);color:var(--muted);font-size:11.5px;cursor:pointer;
+  white-space:nowrap;font-family:'Outfit',sans-serif;transition:all .2s;
+}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{font-weight:600}
+
+/* Content panel */
+.panel{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:14px;padding:26px;min-height:260px;line-height:1.8;
+}
+.panel-heading{
+  font-size:12px;letter-spacing:1.5px;font-family:'JetBrains Mono',monospace;
+  font-weight:600;margin-bottom:18px;text-transform:uppercase;
+}
+
+/* Analogy */
+.analogy{
+  border-radius:10px;padding:20px;font-size:14px;color:#c8d6e8;
+  line-height:1.9;font-style:italic;border-left:3px solid;
+}
+
+/* Example */
+.example-box{
+  background:#06061a;border:1px solid rgba(255,255,255,0.08);
+  border-radius:10px;padding:22px;font-family:'JetBrains Mono',monospace;
+  font-size:12.5px;color:#a5f3fc;line-height:1.95;white-space:pre-wrap;
+  word-break:break-word;
+}
+
+/* Exercise */
+.exercise-box{border-radius:10px;padding:22px;font-size:14px;color:var(--text);line-height:1.85}
+.ex-meta{
+  margin-top:14px;padding:11px 16px;background:var(--bg3);
+  border-radius:8px;font-size:11.5px;color:var(--muted);border:1px solid var(--border);
+  display:flex;gap:20px;flex-wrap:wrap;
+}
+.ex-meta span{display:flex;align-items:center;gap:6px}
+
+/* Mistakes */
+.mistake-item{
+  display:flex;gap:12px;padding:13px 16px;margin-bottom:9px;
+  background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);
+  border-radius:9px;font-size:13px;color:#d1d5db;align-items:flex-start;
+}
+.mx{color:#ef4444;font-weight:800;flex-shrink:0;font-size:15px;line-height:1.4}
+
+/* YouTube */
+.yt-card{
+  display:flex;gap:14px;padding:16px;margin-bottom:11px;
+  background:var(--bg3);border:1px solid rgba(239,68,68,0.15);border-radius:10px;
+  align-items:flex-start;transition:transform .2s;
+}
+.yt-card:hover{transform:translateY(-2px)}
+.yt-thumb{
+  width:42px;height:42px;border-radius:8px;flex-shrink:0;
+  background:linear-gradient(135deg,#ff0000,#ff6b35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:#fff;font-weight:700;
+}
+.yt-ch{font-weight:700;color:#fff;font-size:13.5px;margin-bottom:4px}
+.yt-vid{font-size:12px;color:var(--sub);line-height:1.55}
+
+/* Tools */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:11px}
+.tool-card{
+  padding:15px;border-radius:10px;transition:transform .2s;cursor:default;
+}
+.tool-card:hover{transform:translateY(-3px)}
+.tool-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px}
+.tool-name{font-weight:700;font-size:13px;color:#fff}
+.free-tag{
+  font-size:8px;padding:2px 7px;border-radius:12px;
+  font-weight:700;letter-spacing:1px;font-family:'JetBrains Mono',monospace;
+}
+.tool-desc{font-size:11px;color:var(--muted);line-height:1.55;margin-bottom:10px}
+.tool-link{font-size:11.5px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:4px}
+.tool-link:hover{text-decoration:underline}
+
+/* Next Step */
+.next-box{
+  padding:22px;border-radius:12px;font-size:14.5px;color:var(--text);
+  line-height:1.85;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(0,229,195,0.07),transparent);
+  border:1px solid rgba(0,229,195,0.2);
+}
+.nav-btns{display:flex;gap:10px;flex-wrap:wrap}
+.navbtn{
+  padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;
+  cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;border:1px solid;
+}
+.navbtn:hover{transform:translateX(3px);opacity:.9}
+
+/* Terms grid (for AI terms tab) */
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.term-card{
+  padding:14px 16px;border-radius:10px;background:var(--bg3);
+  border:1px solid var(--border);
+}
+.term-name{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
+  margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.term-badge{font-size:8px;padding:1px 6px;border-radius:4px;font-weight:700;letter-spacing:1px}
+.term-def{font-size:12px;color:var(--sub);line-height:1.6;margin-bottom:6px}
+.term-biz{font-size:11px;color:#86efac;font-style:italic}
+
+/* Research banner */
+.research-bar{
+  margin-top:20px;padding:14px 18px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(255,45,120,0.08));
+  border:1px solid rgba(245,158,11,0.2);
+}
+.research-label{font-size:9px;letter-spacing:3px;color:#f59e0b;font-family:'JetBrains Mono',monospace;font-weight:700;margin-bottom:6px;text-transform:uppercase}
+.research-text{font-size:12px;color:var(--sub);line-height:1.85}
+
+/* Completion card */
+.complete-card{
+  padding:28px;border-radius:14px;text-align:center;
+  background:linear-gradient(135deg,rgba(0,229,195,0.08),rgba(139,92,246,0.08));
+  border:1px solid rgba(0,229,195,0.2);
+}
+.complete-icon{font-size:50px;margin-bottom:12px}
+.complete-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:8px}
+.complete-sub{font-size:14px;color:var(--sub);line-height:1.7}
+
+/* Mobile nav */
+.mob-nav{display:none;gap:5px;padding:10px 14px;background:var(--bg1);
+  border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.mob-wbtn{
+  padding:5px 13px;border-radius:20px;border:1px solid var(--border);
+  background:var(--bg3);color:var(--muted);font-size:10.5px;
+  white-space:nowrap;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;
+}
+.mob-wbtn.active{font-weight:700;color:#fff}
+
+/* Progress fill animation */
+@keyframes fillIn{from{width:0}to{width:var(--tw)}}
+
+/* Mobile */
+@media(max-width:900px){
+  #nav{display:none}
+  #main{padding:14px}
+  .mob-nav{display:flex}
+  .hdr-progress{display:none}
+  .hero-stats{gap:8px}
+  .hstat{padding:6px 10px;font-size:11px}
+  .tools-grid{grid-template-columns:1fr 1fr}
+  .terms-grid{grid-template-columns:1fr}
+  #hdr{padding:0 14px}
+}
+@media(max-width:480px){
+  .tools-grid{grid-template-columns:1fr}
+  .tabs-row .tab-btn{font-size:10.5px;padding:6px 10px}
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<div id="hdr">
+  <div class="hdr-brand">
+    <div class="hdr-dot"></div>
+    <div class="hdr-title">AI MASTERY ROADMAP</div>
+  </div>
+  <div class="hdr-progress" id="hdrProgress"></div>
+  <div class="hdr-badge" id="hdrBadge">WEEK 1 · TOPIC 1/2</div>
+</div>
+
+<!-- MOBILE WEEK NAV -->
+<div class="mob-nav" id="mobNav"></div>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-eyebrow">🚀 Complete AI Learning System — 5 Weeks</div>
+  <h1 class="hero-h1">From <span>Zero to AI Entrepreneur</span><br/>in 5 Weeks — No Coding Required</h1>
+  <p class="hero-sub">Your complete guide to AI, Prompt Engineering, API Keys, AI Agents, Multi-Agent Systems, Vibe Coding, AI Terminology, and Entrepreneurship. Built for a 15-year-old who is building their future right now.</p>
+  <div class="hero-stats">
+    <div class="hstat"><span>📅</span><span class="hstat-val">5 Weeks</span> of content</div>
+    <div class="hstat"><span>📚</span><span class="hstat-val">13 Topics</span> covered</div>
+    <div class="hstat"><span>🛠️</span><span class="hstat-val">50+ Free Tools</span> listed</div>
+    <div class="hstat"><span>🎯</span><span class="hstat-val">Age 15</span> Beginner → Builder</div>
+    <div class="hstat"><span>💻</span><span class="hstat-val">Zero Coding</span> required</div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div id="wrap">
+
+  <!-- LEFT NAV -->
+  <div id="nav">
+    <div id="weekNav"></div>
+    <div class="nav-divider"></div>
+    <div class="nav-glossary-sec">
+      <div class="nav-gls-title">AI Glossary</div>
+      <div id="glossaryList"></div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div id="main">
+    <div class="topic-card" id="topicCard">
+      <div class="tc-bg-icon" id="tcIcon"></div>
+      <div class="tc-breadcrumb" id="tcBreadcrumb"></div>
+      <div class="tc-title" id="tcTitle"></div>
+      <div class="tc-concept" id="tcConcept"></div>
+    </div>
+    <div class="tabs-row" id="tabsRow"></div>
+    <div class="panel" id="panel"></div>
+    <div class="research-bar hidden" id="researchBar">
+      <div class="research-label">📡 Live Research Data — March 2026</div>
+      <div class="research-text">
+        <strong style="color:#f1f5f9">Gartner (2026):</strong> 40% of enterprise apps will use AI agents this year, up from 5% in 2025. &nbsp;•&nbsp;
+        <strong style="color:#f1f5f9">PwC:</strong> AI-skilled professionals earn up to 56% more. &nbsp;•&nbsp;
+        <strong style="color:#f1f5f9">WEF:</strong> 86% of employers say AI will transform their business by 2030. &nbsp;•&nbsp;
+        <strong style="color:#f1f5f9">Key Truth:</strong> The most valuable AI skill in 2026 is NOT coding — it is knowing how to use AI to solve real business problems.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  DATA — ALL 5 WEEKS
+// ═══════════════════════════════════════════════════════════
+const WEEKS = [
+{
+  week:"Week 1", title:"AI Foundations", color:"#00e5c3", icon:"🧠",
+  topics:[
+    {
+      id:"what-is-ai", title:"What is AI?", icon:"🤖",
+      concept:"AI (Artificial Intelligence) is teaching computers to think, learn, and make decisions like a human — but faster, cheaper, and available 24/7.",
+      analogy:`Think of AI like training a very eager student.\n\nYou show this student millions of examples — books, articles, conversations, images, code — billions of pieces of information. After seeing all of that, the student starts recognising patterns. It learns that when someone asks a question, here is the kind of answer they expect. When it sees a cat in a photo, here is what a cat looks like.\n\nAI works exactly the same way. It is trained on enormous amounts of human-created content until it can predict, create, and reason. It is not magic. It is pattern recognition at a scale no human brain could ever match.\n\nRight now, you are talking to AI every day — Google search suggestions, Spotify recommendations, Gmail smart replies, YouTube recommendations. AI is already all around you.`,
+      example:`WHAT AI CAN DO RIGHT NOW (Try Each One Today!):\n\n✦ WRITE & CREATE\n  → Write your school essays, stories, business plans\n  → Create social media captions, email replies, reports\n  → Generate entire websites and apps (more on this later)\n\n✦ RESEARCH & ANALYSE\n  → Summarise 100-page documents in 30 seconds\n  → Research any topic and get expert-level summaries\n  → Compare products, companies, or ideas instantly\n\n✦ THINK & SOLVE\n  → Debug problems and find solutions step by step\n  → Brainstorm business ideas, names, marketing strategies\n  → Give personalised advice on almost any topic\n\nTRY THIS RIGHT NOW:\nGo to claude.ai or chat.openai.com and type:\n"I am 15 years old and want to build a tech company.\nWhat are the 5 best AI-powered business ideas for\na teenager in India in 2026? Be specific and practical."`,
+      exercise:`YOUR FIRST AI EXERCISE — 30 Minutes\n\nStep 1: Create free accounts on all three:\n  • chat.openai.com (ChatGPT)\n  • claude.ai (Claude)\n  • gemini.google.com (Gemini)\n\nStep 2: Ask all three the EXACT same question:\n  "What kind of software company should a 15-year-old\n   tech entrepreneur build in 2026 in India?"\n\nStep 3: Compare the answers. Which AI gave the best response?\nWhich was most specific? Which was most creative?\n\nStep 4: In a Google Doc, write 3 sentences about what you\nnoticed. This is your first AI comparison research.\n\nBonus: Ask your favourite AI: "What are your limitations?"\nUnderstanding AI weaknesses makes you smarter than 99% of users.`,
+      mistakes:["Thinking AI is always right — it confidently makes mistakes called hallucinations. Always verify important facts.","Using AI as a search engine — AI is a thinking partner, not a fact database. Use it to brainstorm and create, then verify.","Giving up when the first answer is bad — the skill is in asking better. Every bad answer teaches you how to prompt better.","Thinking AI will replace you — AI replaces people who use AI poorly. People who use AI brilliantly become 10x more powerful.","Not using AI every single day — the learning curve is fastest with daily use. Treat it like going to the gym."],
+      nextStep:"Now that you understand what AI is, learn about the different power LEVELS of AI — from simple calculators to systems that will surpass all human intelligence combined.",
+      youtube:[
+        {ch:"Fireship",vid:"Search: 'AI Explained in 5 Minutes' — ultra-fast, no jargon overview"},
+        {ch:"Mark Rober",vid:"Search: 'How AI Actually Works' — visual, fun, genuinely explains the math"},
+        {ch:"Two Minute Papers",vid:"Subscribe and watch any video — brilliant bite-sized AI research breakdowns"}
+      ],
+      tools:[
+        {n:"ChatGPT (Free)",u:"https://chat.openai.com",d:"The world's most popular AI — start your journey here"},
+        {n:"Claude AI (Free)",u:"https://claude.ai",d:"Anthropic's AI — best for deep thinking and long tasks"},
+        {n:"Google Gemini (Free)",u:"https://gemini.google.com",d:"Google's AI — great for research, integrates with Google tools"},
+        {n:"Perplexity AI (Free)",u:"https://perplexity.ai",d:"AI that cites its sources — best for research and fact-checking"}
+      ]
+    },
+    {
+      id:"levels-of-ai", title:"Levels of AI", icon:"📊",
+      concept:"AI exists at different intelligence levels — from a basic spam filter to a system potentially smarter than all humans combined. Understanding these levels helps you see the future clearly.",
+      analogy:`Imagine a video game with 5 difficulty levels:\n\n🔵 LEVEL 1 — Narrow AI (We're here now)\nCan do ONE specific task brilliantly.\nExamples: Spam filters, face recognition, Spotify shuffle\nLimitation: Completely useless outside its one job.\n\n🟢 LEVEL 2 — Advanced Narrow AI (Mostly here)\nCan handle multiple tasks in one domain.\nExamples: ChatGPT, Claude, Gemini — great at language\nLimitation: Still cannot truly reason, feel, or be self-aware.\n\n🟡 LEVEL 3 — AGI, Artificial General Intelligence (2–5 years?)\nCan do ANY intellectual task a human can do.\nNo human has seen this yet. Most AI experts believe it is close.\nIf a human can think it, AGI can do it better and faster.\n\n🔴 LEVEL 4 — ASI, Artificial Superintelligence (Unknown timeline)\nSmarter than ALL humans combined in EVERY domain.\nThis is the most debated topic in all of technology.\nCompanies like Anthropic, OpenAI, Google are racing toward this.\n\nWhere we are in 2026: Between Level 2 and Level 3.\nThe transition to Level 3 could happen in your lifetime.\nYou are learning AI at the most important moment in history.`,
+      example:`REAL EXAMPLES AT EACH LEVEL:\n\nNARROW AI (Level 1-2) — Examples you use daily:\n→ Gmail spam filter: knows spam vs not spam, nothing else\n→ Siri/Alexa: great at answering questions, useless at coding\n→ Face ID on your phone: recognises faces, can't write poetry\n→ ChatGPT/Claude: brilliant at language, cannot drive a car\n\nAGI (Level 3) — What it would look like:\n→ You say: "Start a business for me from scratch"\n→ AGI researches the market, writes the business plan,\n   codes the website, creates marketing content,\n   emails potential customers, and reports progress\n→ No human instruction needed for each step\n\nASI (Level 4) — What experts predict:\n→ Solves climate change in days\n→ Discovers 50 years of medicine in a week\n→ Every human on Earth gets a personal AI companion\n   smarter than the world's best doctor, lawyer, and teacher\n\nWHY THIS MATTERS FOR YOU:\nThe entrepreneur who builds businesses around Level 3-4 AI\nwill create the most valuable companies in human history.\nYou are 15. You have time to be that person.`,
+      exercise:`THE AI LEVELS TRACKER — Your Monthly Research Project\n\nCreate a Google Doc titled: "My AI Levels Tracker"\n\nEvery week for the next month, find 3 new AI tools.\nFor each one, record:\n  • Name and website\n  • What level it is (1, 2, or approaching 3)\n  • What problem it solves\n  • What business you could build around it\n  • Price (free tier available?)\n\nBy the end of 1 month, you will have researched 12+ AI tools\nand built genuine market knowledge that most adults do not have.\n\nBonus Research Task:\nGoogle "AGI timeline predictions 2026" and read what the\nleaders of OpenAI, Anthropic, and Google are saying.\nWrite a one-paragraph summary of what you think.`,
+      mistakes:["Thinking AGI is 50 years away — most leading AI researchers now say 2–5 years. This matters for your business planning.","Confusing any current AI tool with AGI — ChatGPT is brilliant but still narrow. Do not over-credit or over-fear it.","Ignoring ASI discussions as science fiction — the CEOs of the world's top AI companies talk about ASI weekly. Pay attention.","Not following the news — AI advances month by month. Set a Google Alert for 'AGI breakthrough' to stay updated automatically."],
+      nextStep:"You now understand what AI is and where it is going. Next, learn Prompt Engineering — the superpower that makes AI give you 10x better results for every single task.",
+      youtube:[
+        {ch:"ColdFusion",vid:"Search: 'The Race to AGI' — best cinematic explainer on AI levels"},
+        {ch:"Lex Fridman",vid:"Search any episode with Sam Altman or Demis Hassabis — world's top AI minds"},
+        {ch:"AI Explained",vid:"Search: 'AGI Timeline — What the experts actually say' — fact-based breakdown"}
+      ],
+      tools:[
+        {n:"Our World in Data — AI",u:"https://ourworldindata.org/artificial-intelligence",d:"Free charts tracking AI progress over decades"},
+        {n:"Hugging Face (Free)",u:"https://huggingface.co",d:"Browse every AI model ever made — free playground"},
+        {n:"Google Alerts (Free)",u:"https://alerts.google.com",d:"Set alerts for 'AGI' and 'AI breakthrough' to stay updated"}
+      ]
+    }
+  ]
+},
+{
+  week:"Week 2", title:"Prompt Engineering & API Keys", color:"#ff2d78", icon:"⚡",
+  topics:[
+    {
+      id:"prompt-eng", title:"Prompt Engineering", icon:"✍️",
+      concept:"Prompt Engineering is the skill of writing instructions to AI that produce extraordinary results. It is the single most in-demand AI skill of 2026 and requires zero coding.",
+      analogy:`Imagine AI is the world's smartest employee — a genius who has read everything ever written and can do almost any task.\n\nBut this genius needs clear instructions. If you say "do something," they will do something random. If you give them a clear brief — role, context, task, format, constraints — they produce world-class work.\n\nPrompt Engineering is learning how to write that perfect brief.\n\nHere is the formula professional prompt engineers use:\n\n🎯 ROLE: "You are a [expert type]..."\nGive AI a specific identity to think from.\n\n📋 CONTEXT: "I am a 15-year-old in India who wants to..."\nThe more context you give, the more personalised the answer.\n\n🎯 TASK: "Your job is to..."\nBe specific about exactly what you want done.\n\n📐 FORMAT: "Give me the answer as a numbered list / table / essay..."\nTell AI how to structure its response.\n\n⚙️ CONSTRAINTS: "Keep it under 200 words / use simple language / avoid jargon"\nSet the rules and boundaries for the response.`,
+      example:`BEFORE vs AFTER — See the massive difference:\n\n❌ BAD PROMPT:\n"Write a business plan"\n\n✅ GREAT PROMPT:\n"You are a startup advisor who has mentored 50 teen founders.\nI am a 15-year-old student in Hyderabad, India.\nWrite a one-page business plan for an AI-powered homework\nhelper app targeting Class 10-12 students.\nInclude: Problem, Solution, Target Market, Revenue Model,\n3 Competitors, and why students will pay.\nUse simple language. Format with clear headings."\n\n→ Same AI. Same zero cost. 10x better result.\n\n──────────────────────────────────────────\nPROFESSIONAL PROMPT STRUCTURES:\n\n1. THE EXPERT BRIEF:\n"Act as [role]. Given [context], your task is [task].\nThe output should be [format]. Constraints: [rules]."\n\n2. THE STEP BY STEP:\n"Think through this step by step before answering: [question]"\n\n3. THE IMPROVER:\n"Here is my [essay/plan/idea]: [paste it]\nImprove it by making it [clearer / more persuasive / shorter]."\n\n4. THE ROLE REVERSAL:\n"You are an expert reviewer. Find every weakness\nin this business idea: [idea]. Be brutally honest."\n\n5. THE CHAIN:\n"First do X. Then, using the result, do Y. Finally, do Z."`,
+      exercise:`BUILD YOUR PERSONAL PROMPT LIBRARY\n\nCreate a Google Doc titled: "My AI Prompt Library"\n\nWrite and TEST 10 prompts across these categories:\n\n📚 SCHOOL (2 prompts)\n  • Essay helper: "You are my English teacher..."\n  • Study guide: "Explain [topic] like I am 12..."\n\n💼 BUSINESS (3 prompts)\n  • Idea generator for teen entrepreneurs\n  • Market research for a specific idea\n  • Competitor analysis prompt\n\n📱 CONTENT (2 prompts)\n  • LinkedIn post about your AI learning journey\n  • Twitter/X thread about an AI topic\n\n🧠 LEARNING (3 prompts)\n  • Explain any concept with an analogy\n  • Quiz me on any topic I am learning\n  • Give me a roadmap to learn any skill\n\nFor each prompt:\n✓ Write the first version\n✓ Test it in ChatGPT\n✓ Note what was bad about the result\n✓ Rewrite the prompt to fix it\n✓ Test again and compare\n\nThis library will save you hours every week for years.`,
+      mistakes:["Being vague — 'help me' gets you generic. 'Help me write a 200-word LinkedIn post about AI agents for a teen entrepreneur audience' gets you gold.","Not giving your own context — AI does not know who you are. Always include: age, location, goal, audience, and level of expertise.","Accepting first responses — every great prompter iterates. Always ask: 'Make this better by...' or 'Now rewrite it but...'","Not specifying output format — add 'give me this as a table' or 'use bullet points' or 'write it in 3 paragraphs' for cleaner outputs.","Using the same prompt for everything — build a library. Different tasks need different prompt structures."],
+      nextStep:"You have the most important AI skill. Now learn what API Keys are — the connection layer that lets you plug AI into your own apps and automations.",
+      youtube:[
+        {ch:"LearnPrompting.org",vid:"Search: 'Prompt Engineering Full Guide 2026' — the most complete free course"},
+        {ch:"Jeff Su",vid:"Search: 'ChatGPT Prompt Engineering Tips' — 10 practical techniques in 10 minutes"},
+        {ch:"Tiff In Tech",vid:"Great for young entrepreneurs — practical AI content with a relatable style"}
+      ],
+      tools:[
+        {n:"PromptHero (Free)",u:"https://prompthero.com",d:"Community library of thousands of tested prompts"},
+        {n:"FlowGPT (Free)",u:"https://flowgpt.com",d:"Find and share the best prompts for every use case"},
+        {n:"Google Docs (Free)",u:"https://docs.google.com",d:"Build and maintain your personal prompt library here"},
+        {n:"LearnPrompting.org",u:"https://learnprompting.org",d:"Free comprehensive course on prompt engineering"}
+      ]
+    },
+    {
+      id:"api-keys", title:"API Keys", icon:"🔑",
+      concept:"An API Key is a secret password that allows YOUR app, tool, or automation to connect to and use an AI's brain. It is the bridge between AI and your own creations.",
+      analogy:`Think of it this way.\n\nThe electricity grid exists and is incredibly powerful.\nBut to USE that electricity, your house needs to be wired into the grid.\n\nAn API is like the electrical wiring.\nAn API Key is like the unique ID that proves your house is authorised.\n\nOnce connected:\n• Your app can think using ChatGPT's brain\n• Your automation can write emails using Claude's intelligence\n• Your chatbot can answer questions using Gemini's knowledge\n\nWithout an API Key: Your app is just a dead interface.\nWith an API Key: Your app is powered by the world's most intelligent AI.\n\nThe best part? You do NOT need to code to use API Keys.\nModern no-code tools like Make.com and Zapier let you\npaste in an API Key and connect AI to anything\nwithout writing a single line of code.\n\nThis means a 15-year-old with zero programming knowledge\ncan build AI-powered automations that businesses pay\nthousands of rupees a month for.`,
+      example:`HOW API KEYS WORK — Step by Step:\n\n1. GO TO THE AI PROVIDER'S DEVELOPER PLATFORM\n   • OpenAI: platform.openai.com\n   • Anthropic: console.anthropic.com\n   • Google: aistudio.google.com\n\n2. GENERATE AN API KEY\n   It looks like this: sk-proj-abc123xyz789...\n   IMPORTANT: Never share this key publicly.\n   Treat it like your bank password.\n\n3. USE IT IN A NO-CODE TOOL\n   Open Make.com (free) → Create automation →\n   Add OpenAI module → Paste API key → Done!\n\n──────────────────────────────────────────\nREAL STUDENT SUCCESS STORY:\n\nA student used API Key + Make.com + Google Sheets to build:\n→ A form that collects customer questions\n→ AI automatically reads each question\n→ AI writes a personalised answer\n→ Answer saved to Google Sheets\n→ Auto-emailed back to the customer\n\nTime to build: 3 hours.\nCost per month: Less than ₹500 in API costs.\nValue to a local business: ₹15,000/month in saved time.\n\nTHAT is what API keys enable for non-coders.`,
+      exercise:`GET YOUR FIRST API KEY AND BUILD YOUR FIRST AUTOMATION\n\nStep 1: Get Your API Key\n  → Go to platform.openai.com\n  → Sign up for free\n  → Click API Keys → Create new key\n  → Copy it and save it somewhere safe\n\nStep 2: Open Make.com\n  → Sign up free at make.com\n  → Create a new scenario\n\nStep 3: Build This Automation\n  → Trigger: Google Forms (new response)\n  → Action 1: OpenAI — send question to AI\n  → Action 2: Google Sheets — save AI answer\n  → (Optional) Action 3: Gmail — email the answer\n\nStep 4: Test It\n  → Fill out your own Google Form with a question\n  → Watch Make.com run the automation\n  → See the AI answer appear in Google Sheets\n\nCongratulations — you just built your first\nAI-powered product without writing any code.`,
+      mistakes:["Sharing your API key in public posts, screenshots, or GitHub — bots scan the internet for exposed keys and will steal and use them","Not setting usage limits — go to your API dashboard and set a monthly spending cap so you never get unexpected charges","Thinking you need to code to use APIs — Make.com, Zapier, and n8n let you use any API with drag-and-drop, no code at all","Skipping the free tier — every major AI API has free credits to start. Use those first before spending any money","Using one AI API for everything — different AIs have different strengths. Claude is best for long reasoning. GPT-4 is best for creative. Gemini is best for Google integrations."],
+      nextStep:"You can now connect AI to the world. The next evolution is AI Agents — systems that do not just respond but actually take autonomous actions on your behalf.",
+      youtube:[
+        {ch:"Liam Ottley",vid:"Search: 'How to Use OpenAI API Without Coding' — perfect no-code walkthrough"},
+        {ch:"Make (Official Channel)",vid:"Search: 'Make.com AI automation tutorial' — free official beginner guide"},
+        {ch:"Zapier (Official)",vid:"Search: 'Zapier AI automation for beginners' — their official tutorials are excellent"}
+      ],
+      tools:[
+        {n:"OpenAI Platform (Free)",u:"https://platform.openai.com",d:"Get your first API key — $5 free credits to start"},
+        {n:"Anthropic Console (Free)",u:"https://console.anthropic.com",d:"Claude API key — excellent for complex reasoning tasks"},
+        {n:"Make.com (Free tier)",u:"https://make.com",d:"Best no-code tool to connect APIs — 1,000 operations/month free"},
+        {n:"Zapier (Free tier)",u:"https://zapier.com",d:"Connect 6,000+ apps with AI — 100 tasks/month free"}
+      ]
+    }
+  ]
+},
+{
+  week:"Week 3", title:"AI Agents & Multi-Agent Systems", color:"#8b5cf6", icon:"🤖",
+  topics:[
+    {
+      id:"ai-agents", title:"AI Agents", icon:"🕵️",
+      concept:"An AI Agent is an AI that does not just answer questions — it takes ACTIONS. It can browse websites, write and send emails, search databases, run code, and complete complex multi-step tasks completely on its own.",
+      analogy:`Imagine two types of assistants:\n\n📖 NORMAL AI = A brilliant librarian\nYou walk in, ask a question.\nThey think, give you an answer, and sit back down.\nThey cannot DO anything in the real world.\n\n🦾 AI AGENT = A brilliant employee\nYou give them a goal: "Research our 5 competitors,\nwrite a comparison report, and email it to me by 5pm."\nThey go do it. Independently. Without being told each step.\nThey make decisions, use tools, handle problems, and deliver results.\n\nThe difference is AUTONOMY.\nNormal AI responds. AI Agents ACT.\n\nIn 2026, AI agents are being used to:\n• Run entire customer support departments\n• Manage social media accounts autonomously\n• Research and write entire research reports\n• Monitor stock prices and send alerts\n• Book meetings and manage calendars\n• Code, test, and deploy software updates\n\nIn 5 years, every company will run partly on AI agents.\nThe people who understand how to build and manage agents\nwill be extremely valuable.`,
+      example:`REAL AI AGENT IN ACTION:\n\nYou give this goal to an AI agent:\n"Research the top 5 EdTech companies in India in 2026.\nFor each: find their product, pricing, founder ages,\nfunding raised, and what makes them unique.\nPut it all in a comparison table."\n\nWHAT THE AGENT DOES (without your help):\n→ Step 1: Searches Google for top EdTech India 2026\n→ Step 2: Visits each company website\n→ Step 3: Finds Crunchbase for funding data\n→ Step 4: Searches LinkedIn for founder information\n→ Step 5: Synthesises all information\n→ Step 6: Creates the comparison table\n→ Step 7: Presents it to you\n\nYou gave ONE instruction. The agent took 7 actions.\n\n──────────────────────────────────────────\nFREE AGENTS YOU CAN USE TODAY:\n\n• perplexity.ai — AI that searches the web deeply\n• claude.ai — best for long reasoning agent tasks\n• agent.ai — no-code agent builder\n• Manus AI — autonomous research agent (free tier)`,
+      exercise:`YOUR FIRST AI AGENT TASK — Market Research\n\nGo to Perplexity AI (perplexity.ai) — it is free.\n\nGive it this multi-step research task:\n"Research this for me step by step:\n1. What are the top 5 software products making the most\n   money in India targeting students in 2026?\n2. For each product: company name, what it does,\n   approximate monthly revenue, and founder age.\n3. What gap exists that none of them fill?\n4. Based on the gap, suggest one AI-powered product\n   a 15-year-old could build to fill it."\n\nNote how Perplexity:\n✓ Searches multiple websites\n✓ Synthesises information from different sources\n✓ Gives you citations so you can verify\n✓ Connects the research to a recommendation\n\nWrite a 1-page summary of what you found in Google Docs.\nThis is real entrepreneurship market research.`,
+      mistakes:["Trusting agent output 100% — agents make mistakes and hallucinate. Always verify important results before acting on them","Not giving enough context — agents need to know: who you are, what format you want, what level of detail, and what the output is for","Expecting perfection on the first run — agent tasks often need refinement. Treat it as a conversation, not a one-shot command","Building agents before using them — spend 1-2 weeks using existing agents before you try to build your own","Giving agents too many goals at once — one clear, specific goal at a time produces far better results than five vague goals"],
+      nextStep:"Single agents are powerful. But when you connect multiple agents together, each doing a specialised job, you have built the architecture of a real AI-powered company.",
+      youtube:[
+        {ch:"David Ondrej",vid:"Search: 'AI Agents Explained Simply' — best beginner video on the concept"},
+        {ch:"Matthew Berman",vid:"Search his channel — best real-world AI agent tutorials and builds"},
+        {ch:"Liam Ottley",vid:"Search: 'Build Your First AI Agent No Code' — entrepreneur-focused walkthrough"}
+      ],
+      tools:[
+        {n:"Perplexity AI (Free)",u:"https://perplexity.ai",d:"Best free AI agent for deep web research"},
+        {n:"Claude.ai (Free)",u:"https://claude.ai",d:"Best for long, complex multi-step agent tasks"},
+        {n:"Agent.ai (Free tier)",u:"https://agent.ai",d:"Visual no-code agent builder platform"},
+        {n:"n8n (Free open source)",u:"https://n8n.io",d:"Self-hosted agent workflow builder — fully free"}
+      ]
+    },
+    {
+      id:"multi-agent", title:"Multi-Agent Systems", icon:"🌐",
+      concept:"A Multi-Agent System is when multiple AI agents work together as a coordinated team — each specialised in one job — to complete complex goals that no single agent could handle alone.",
+      analogy:`Think of it like building your dream company,\nbut every employee is an AI agent:\n\n🏢 CEO (You): Sets the goal and reviews final output\n\n🔎 Research Agent: Searches the internet for data\n📝 Writer Agent: Turns data into clear written content\n✅ QA Agent: Reviews everything for accuracy\n📊 Data Agent: Organises info into tables and reports\n📣 Marketing Agent: Adapts content for social media\n📧 Publisher Agent: Sends emails and posts content\n\nYou set ONE goal: "Create a weekly competitive\nanalysis report for our market and distribute it."\n\nThe agents handle every step automatically.\nYou review the final output.\n\nThis is not science fiction.\nCompanies are building exactly this right now.\n\nGartner predicts 40% of enterprise apps will use\nmulti-agent systems by the end of 2026.\n\nThe founders who understand this architecture\nare building companies worth hundreds of crores\nwith teams of 3-5 people.`,
+      example:`REAL MULTI-AGENT SYSTEM BUILD:\n\nA solo founder built an AI content company:\n\n→ Agent 1 (Trend Spotter)\n   Monitors Twitter, Reddit, LinkedIn daily\n   Identifies trending topics in their industry\n   Passes top 5 trends to Agent 2\n\n→ Agent 2 (Researcher)\n   Takes each trending topic\n   Researches it deeply using web search\n   Compiles facts, data, expert quotes\n   Passes research package to Agent 3\n\n→ Agent 3 (Writer)\n   Takes research package\n   Writes a full LinkedIn article + Twitter thread\n   Writes 3 variations of each\n   Passes to Agent 4\n\n→ Agent 4 (Quality Checker)\n   Reviews for accuracy, tone, and brand voice\n   Flags issues, approves good content\n   Passes approved content to Agent 5\n\n→ Agent 5 (Scheduler)\n   Queues content for optimal posting times\n   Posts automatically at the right moment\n\nRESULT: 10 pieces of high-quality content per week.\nHuman time required: 1 hour of review.\nRevenue: ₹1,50,000/month from content clients.\nTeam size: 1 person + AI agents.`,
+      exercise:`DESIGN YOUR FIRST MULTI-AGENT SYSTEM\n\nUse Google Slides or a free tool like Miro.com\nto create a visual diagram of a Multi-Agent System.\n\nChoose ONE of these business problems to solve:\n  A) Social media content creation for a local business\n  B) Student homework help and tutoring system\n  C) Market research and competitor tracking\n  D) Customer support for an e-commerce store\n\nFor your chosen problem, design:\n  ✦ How many agents do you need? (aim for 3-5)\n  ✦ What is each agent's ONE specific job?\n  ✦ What information does each agent receive as input?\n  ✦ What does each agent produce as output?\n  ✦ How does information flow from one to the next?\n  ✦ Where does the human (you) review and approve?\n\nThis systems thinking skill is what separates\nfounders from employees. Practice it weekly.\n\nShare your diagram on LinkedIn with\n#AIEntrepreneur #MultiAgentSystem`,
+      mistakes:["Designing agents that do too many things — the power of multi-agent is specialisation. One focused agent beats one overloaded agent every time","Building before mapping — always draw the system on paper or in a diagram before touching any tool. Save weeks of mistakes.","No human checkpoint — always include at least one point where a human reviews before anything irreversible happens (sending emails, posting publicly, etc.)","Ignoring error handling — what happens when one agent gets a bad result? Design your system for failure, not just success","Underestimating costs — at scale, many AI API calls can add up fast. Always calculate your per-unit cost before building a business model around it"],
+      nextStep:"You now understand how AI agents and systems work. Next: learn Vibe Coding — how to actually BUILD these tools using plain English, no traditional programming required.",
+      youtube:[
+        {ch:"Cole Medin",vid:"Search: 'Multi Agent AI Systems Build' — visual, practical walkthroughs"},
+        {ch:"Sam Witteveen",vid:"Search: 'Building Multi Agent AI 2026' — shows real production systems"},
+        {ch:"All Things AI",vid:"Search: 'Agentic AI explained for beginners' — accessible conceptual overview"}
+      ],
+      tools:[
+        {n:"n8n (Free, open source)",u:"https://n8n.io",d:"Best open-source tool for multi-agent workflows"},
+        {n:"Make.com (Free tier)",u:"https://make.com",d:"Visual drag-and-drop multi-agent automation"},
+        {n:"LangFlow (Free)",u:"https://langflow.org",d:"Open source visual drag-and-drop agent designer"},
+        {n:"Miro (Free tier)",u:"https://miro.com",d:"Best tool to diagram and plan your agent system"}
+      ]
+    }
+  ]
+},
+{
+  week:"Week 4", title:"Future of AI & Roadmap", color:"#f59e0b", icon:"🚀",
+  topics:[
+    {
+      id:"future-ai", title:"The Future of AI", icon:"🔮",
+      concept:"AI is not just growing — it is accelerating. Every 6 months brings capabilities that would have seemed impossible the year before. Knowing where AI is heading is your single biggest competitive advantage.",
+      analogy:`Here is a thought experiment.\n\nImagine you are in 1994.\nSomeone tells you: "In 10 years, EVERY business will\nneed a website. Every transaction will happen online.\nNew millionaires will be created just by being early."\n\nThe people who heard that and acted — learned HTML,\nbuilt websites, created e-commerce — became incredibly wealthy.\nThe people who waited — "let me wait until it matures" —\nworked for those wealthy people.\n\nAI is that exact moment.\nBut 100x larger and moving 10x faster.\n\nYou are 15 years old in 2026.\nYou are not late. You are early.\n\nThe internet's "website moment" took 10 years to mature.\nAI's equivalent moment is happening in the next 2-3 years.\n\nEvery year you spend building AI knowledge now\nis worth a decade of learning later.\nThis is the most valuable time in your life to act.`,
+      example:`THE 8 BIGGEST AI TRENDS SHAPING 2026-2030:\n\n🔴 1. AGENTIC AI (Happening Now)\nAI that works autonomously on complex, multi-step tasks.\nGartner: 40% of enterprise software uses agents by end of 2026.\nOpportunity: Build AI agent services for businesses.\n\n🟡 2. VIBE CODING (Happening Now)\nBuilding real software by describing it in plain English.\nNo programming languages needed — AI writes all code.\nOpportunity: Build products without a technical co-founder.\n\n🟢 3. MULTIMODAL AI (Happening Now)\nAI that simultaneously sees, hears, reads, and speaks.\nGPT-4o and Gemini Ultra already do this.\nOpportunity: Build AI tutors, accessibility tools, media apps.\n\n🔵 4. AI + ROBOTICS (2026-2028)\nLLMs powering physical robots (Tesla Optimus, Figure AI).\nThe combination of AI brains + robot bodies.\nOpportunity: Logistics, manufacturing, elder care solutions.\n\n🟣 5. PERSONALISED AI (2026-2027)\nEvery person gets a custom AI: personal doctor, lawyer,\ntutor, financial advisor, therapist — always available.\nOpportunity: Build vertical AI assistants for specific groups.\n\n🩶 6. AI GOVERNANCE & ETHICS (Growing Now)\nGovernments worldwide creating AI regulations.\nWho builds ethical AI will earn trust and premium pricing.\nOpportunity: AI auditing, compliance, ethics consulting.\n\n⚪ 7. OPEN SOURCE AI EXPLOSION (Happening Now)\nMeta's Llama, Mistral, and others matching closed models.\nEnterprise-grade AI available for free to build on.\nOpportunity: Build on open-source to reduce costs by 90%.\n\n🔶 8. AGI TRANSITION (2027-2030)\nThe single biggest technological event in human history.\nEvery industry restructures. New billion-dollar companies born.\nOpportunity: Position yourself NOW before the wave hits.`,
+      exercise:`THE FUTURE OPPORTUNITIES DOCUMENT\n\nCreate a Google Doc titled: "My AI Opportunity Map"\n\nFor each of the 8 trends above, research and write:\n\n1. TREND SUMMARY (2 sentences in your own words)\n2. WHO IS AFFECTED (which industries, which people)\n3. BUSINESS IDEA (one company a 15-year-old could build)\n4. TARGET CUSTOMER (who would pay, and roughly how much)\n5. HOW TO START (what tool or platform would you use first)\n\nThen at the end, answer:\n"Based on my research, the ONE trend I am most excited about\nand believe I can build a business around is ________\nbecause ________. My first step will be ________."\n\nThis document is your personal strategic plan.\nUpdate it every 3 months as AI evolves.\nIn 2 years, you will be astonished by your own foresight.`,
+      mistakes:["Waiting for AI to be 'more mature' — by the time it feels mature to most people, the best opportunities will already be taken","Following only one AI company — OpenAI, Anthropic, Google, Meta, and Mistral all have important different strengths. Follow all of them.","Thinking AI ethics is boring — AI ethics is one of the highest-paying, most in-demand fields emerging. It is not optional for any serious builder.","Not taking notes on trends — your memory will fail you. Write down every interesting AI development you encounter. It becomes valuable pattern recognition.","Building without understanding trends — know where the wave is going before you paddle out. Build towards the future, not the present."],
+      nextStep:"You understand where AI is going. Now learn the complete Entrepreneur Roadmap — the exact path from knowledge to your first paying customer.",
+      youtube:[
+        {ch:"Andrej Karpathy",vid:"Subscribe — ex-Tesla AI chief, best technical-but-accessible AI explanations anywhere"},
+        {ch:"Greg Isenberg",vid:"Search: 'AI business opportunities 2026' — brilliant entrepreneur + AI trend analysis"},
+        {ch:"AI Jason",vid:"Search: 'Future of AI for entrepreneurs' — practical, motivating, and research-backed"}
+      ],
+      tools:[
+        {n:"Bolt.new (Free)",u:"https://bolt.new",d:"Start building AI products right now with plain English"},
+        {n:"Lovable.dev (Free)",u:"https://lovable.dev",d:"Turn AI product ideas into real apps instantly"},
+        {n:"Hugging Face (Free)",u:"https://huggingface.co",d:"Explore every open-source AI model and dataset free"},
+        {n:"State of AI Report",u:"https://www.stateof.ai",d:"Free annual report on every major AI development"}
+      ]
+    },
+    {
+      id:"entrepreneur-roadmap", title:"Your Entrepreneur Roadmap", icon:"🗺️",
+      concept:"With AI tools available today, a 15-year-old has more building power than a 25-year-old did in 2020 with a full technical team. The roadmap to your first company is shorter than you think.",
+      analogy:`Let me compare two paths:\n\n🐌 OLD PATH (Pre-AI, Pre-2023)\n  → Learn to code: 2-3 years\n  → Build product: 6-12 months with a team\n  → Find investors: 12-18 months of pitching\n  → Launch: 3-4 years total\n  → Cost: $100,000+ or co-founder equity\n\n⚡ YOUR PATH (AI-Powered, 2026)\n  → Learn AI tools: 4-5 weeks (you are doing this now)\n  → Build product: 1-7 days with Vibe Coding\n  → Launch and get first users: Week 1 of being live\n  → First revenue: Potentially Month 1\n  → Cost: ₹0 to ₹5,000 per month\n\nElon Musk built his first software company at 12.\nMark Zuckerberg built Facebook at 19.\nBut NEITHER of them had AI tools.\n\nYou do.\n\nA teenager in 2026 with AI tools, a real problem to solve,\nand the willingness to start has more leverage than any\nentrepreneur in history. The only missing ingredient is action.`,
+      example:`YOUR COMPLETE 90-DAY ENTREPRENEUR ROADMAP:\n\n─── MONTH 1: LEARN & OBSERVE ───────────────────\nWeek 1-2: Complete this AI roadmap (you are doing it!)\nWeek 3: Use AI tools every day. Build your prompt library.\nWeek 4: Talk to 10 people about their biggest daily frustrations.\n         Listen. Write every answer down. Look for patterns.\n\n─── MONTH 2: VALIDATE & BUILD ──────────────────\nWeek 5: Pick the ONE most painful problem from your research.\n         Test if people would pay: create a Google Form asking\n         "Would you pay ₹299/month for AI that solves X?"\nWeek 6: Build Version 1 using bolt.new.\n         Simple is fine. Working beats perfect every time.\nWeek 7: Create a landing page on carrd.co (free, 10 minutes)\nWeek 8: Share in 5 WhatsApp groups, 3 Reddit communities,\n         and post on LinkedIn about what you built.\n\n─── MONTH 3: LAUNCH & LEARN ────────────────────\nWeek 9: Get your first 10 real users. Free is fine at first.\nWeek 10: Talk to all 10. Ask: "What would you pay for this?\n          What is missing? What would you tell a friend?"\nWeek 11: Make 3 improvements based on feedback.\nWeek 12: Launch on Product Hunt.\n          Ask your first users to leave reviews.\n\n─── BUSINESS IDEAS TO START WITH ───────────────\n✅ AI quiz generator for Class 10-12 students (₹199/month)\n✅ AI chatbot for local businesses (₹4,999/month setup)\n✅ AI-powered CV and cover letter builder (₹99 per use)\n✅ AI content writer for Instagram businesses (₹2,999/month)\n✅ AI homework explainer for a specific subject (₹299/month)`,
+      exercise:`THE 7-DAY STARTUP CHALLENGE — START TODAY\n\nDay 1 (Today): Write down ONE real problem you personally\nexperience as a student. Be specific. Not "studying is hard"\nbut "I waste 2 hours every night searching for the right\nexamples to understand chemistry formulas."\n\nDay 2: Build a landing page on carrd.co (free).\nDescribe the problem and your solution in 3 sentences.\nAdd a "Join Waitlist" button linking to a Google Form.\n\nDay 3: Post about it on LinkedIn.\nShare in 3 relevant WhatsApp groups.\nPost on r/IndiaStudents on Reddit.\nGoal: Tell 100 people. Get 10 to sign up to waitlist.\n\nDay 4: Video call or voice note 5 people who signed up.\nAsk only: "What is the most painful part of this problem?"\n\nDay 5: Build Version 1 on bolt.new.\nDescribe your product in detail. Let AI build it.\nDo not aim for perfect. Aim for working.\n\nDay 6: Send the working link to your 10 waitlist signups.\nAsk for feedback. Celebrate — you are a founder now.\n\nDay 7: Post a LinkedIn update: "I built my first AI product\nthis week. Here is what I learned: [3 lessons]"\n\nThis post will change your life more than you know.`,
+      mistakes:["Waiting for the perfect idea — you will never find it by thinking. You find it by building, shipping, and learning from real users","Building without validating — spend 1 week testing if people care before spending 1 month building. Most good ideas fail validation. That is good — you saved months.","Undercharging — teen entrepreneurs constantly undercharge out of self-doubt. If a business saves someone 3 hours per month, ₹999/month is a bargain. Charge like your work has value.","Working in secret — build in public on LinkedIn from day one. Your story is your marketing. 'I am a 15-year-old building an AI company' is one of the most compelling stories online.","Treating failure as the end — every failed product is a university course in market research. The founders who succeed are the ones who failed the most and learned the fastest."],
+      nextStep:"You have a complete roadmap. Now learn Vibe Coding — the practical skill that lets you build everything in this roadmap using plain English.",
+      youtube:[
+        {ch:"Greg Isenberg",vid:"Watch every video — the single best YouTube channel for AI entrepreneurship in 2026"},
+        {ch:"Y Combinator",vid:"Search: 'How to Start a Startup full playlist' — free world-class startup education"},
+        {ch:"Alex Hormozi",vid:"Search: 'How to get your first 100 customers' — best practical sales advice for founders"}
+      ],
+      tools:[
+        {n:"Carrd.co (Free)",u:"https://carrd.co",d:"Build a stunning landing page in 10 minutes, free"},
+        {n:"Product Hunt (Free)",u:"https://producthunt.com",d:"Launch your product to thousands of early adopters"},
+        {n:"LinkedIn (Free)",u:"https://linkedin.com",d:"Build your entrepreneur personal brand starting today at 15"},
+        {n:"Notion (Free)",u:"https://notion.so",d:"Run your entire startup from one free Notion workspace"}
+      ]
+    }
+  ]
+},
+{
+  week:"Week 5", title:"Vibe Coding, AI Terms & Entrepreneurship", color:"#22d3ee", icon:"💎",
+  topics:[
+    {
+      id:"vibe-coding", title:"Vibe Coding", icon:"🎨",
+      concept:"Vibe Coding is building real, working software — apps, websites, tools, games — by describing exactly what you want in plain English. The AI reads your description and writes all the code for you.",
+      analogy:`In the old world, building software worked like this:\n\n🔧 OLD WAY (2020 and before):\n→ Learn HTML, CSS, JavaScript (6-12 months)\n→ Learn a framework like React or Vue (another 6 months)\n→ Learn databases, backend, deployment... (another year)\n→ FINALLY build your product (2-3 years total)\n\nIn the new world:\n\n✨ VIBE CODING (2026):\n→ Open bolt.new (free, no signup for first try)\n→ Type: "Build me a web app where students paste their\n   class notes and get an AI quiz to test themselves.\n   Dark theme. Score tracker. Mobile friendly."\n→ Press Enter\n→ Wait 2-3 minutes\n→ YOUR APP IS BUILT AND RUNNING\n\nYou are the architect.\nYou are the product manager.\nYou are the visionary.\nAI is your entire engineering team.\n\nThe skill is not coding.\nThe skill is describing your vision with precision.\nThis is a creative and entrepreneurial skill,\nnot a technical one.`,
+      example:`VIBE CODING SESSION — Follow Along:\n\nGO TO bolt.new RIGHT NOW and type this prompt:\n──────────────────────────────────────────\n"Build a web app called StudyBot AI.\nFeatures:\n- Paste a block of text/notes\n- Click 'Generate Quiz' button\n- AI creates 5 multiple choice questions\n- User selects answers and gets instant feedback\n- Score shown at the end with correct answers\n- Option to try again with new questions\nDesign: Dark background (#0f0f1a), bright cyan accents,\nclean modern font, works perfectly on mobile\n——————————————————————————\n(Note: For the AI quiz feature, use a mock/demo mode\nsince we are not adding API keys yet)"\n──────────────────────────────────────────\n\nWATCH WHAT HAPPENS:\n→ Bolt reads your description\n→ Writes all HTML, CSS, JavaScript automatically\n→ You get a live preview in seconds\n→ You can iterate: "make the buttons bigger"\n  "change the font" "add a progress bar"\n\nOTHER VIBE CODING PLATFORMS:\n• lovable.dev — best for full startup products\n• v0.dev — best for beautiful UI components\n• replit.com — browser coding + instant deployment\n• cursor.sh — AI code editor for power users`,
+      exercise:`YOUR FIRST REAL PRODUCT — Build It Today\n\nChoose ONE of these to build using bolt.new:\n\nOPTION A: Quiz Maker\n"Build a web app where a student types a topic\n(e.g. 'World War 2') and gets 10 quiz questions\nwith answers to study from."\n\nOPTION B: Habit Tracker\n"Build a daily habit tracker app. Add habits,\ncheck them off daily, see a streak counter,\nget a motivational message each day.\nClean dark design with green accents."\n\nOPTION C: Business Name Generator\n"Build a tool where you type your business idea\nand it generates 10 creative business names\nwith a short reason for each one."\n\nWHATEVER YOU BUILD:\n1. Screenshot the final result\n2. Click 'Deploy' in bolt.new (free hosting!)\n3. Get the live public link\n4. Post on LinkedIn:\n   "I built my first AI-powered app today using\n   Vibe Coding. No traditional coding. Here is the link.\n   #VibeCoding #AIEntrepreneur #BuildingInPublic"\n\nThis single post will get you more opportunities\nthan any certificate or degree at your age.`,
+      mistakes:["Being too vague in descriptions — 'make a cool app' produces garbage. 'Make a quiz app with these exact features and this color scheme' produces gold","Not iterating — after the first build, type 'change X to Y' or 'add a feature that does Z'. Vibe Coding is a conversation, not a one-shot command","Trying to build too much — your first app should do ONE thing brilliantly. Add features after you have real users asking for them","Not deploying — building without sharing is practicing alone. Deploy and share every build so others can use and give feedback","Quitting when it does not work first try — some prompts need 3-5 iterations to get right. Persistence here is the skill"],
+      nextStep:"You can now build real products. To truly speak the language of your users, investors, and partners, learn the must-know AI terminology that every tech founder uses daily.",
+      youtube:[
+        {ch:"Fireship",vid:"Search: 'Vibe Coding is the Future' — concise, brilliant overview of the concept"},
+        {ch:"developedbyed",vid:"Search: 'Build a full app with bolt.new' — best beginner walkthrough available"},
+        {ch:"Theo (t3.gg)",vid:"Search: 'Vibe coding my startup' — real project build from idea to deployment"}
+      ],
+      tools:[
+        {n:"Bolt.new (Free)",u:"https://bolt.new",d:"Best overall — full apps from English descriptions"},
+        {n:"Lovable.dev (Free)",u:"https://lovable.dev",d:"Best for startup-grade products with databases"},
+        {n:"v0.dev (Free)",u:"https://v0.dev",d:"Best for beautiful UI components and designs"},
+        {n:"Replit (Free)",u:"https://replit.com",d:"Browser IDE + AI + instant deployment — all free"}
+      ]
+    },
+    {
+      id:"ai-terms", title:"Must-Know AI Terms", icon:"📖",
+      concept:"Every tech founder needs to speak the language of AI fluently. These terms come up in every investor pitch, product meeting, and technical conversation. Learn them deeply, not just the definition.",
+      analogy:`Learning AI terms without context is like learning\nEnglish words without knowing how to use them in sentences.\n\nSo for every term, learn three things:\n  1. What it actually means\n  2. A real-world analogy that makes it stick\n  3. How YOU as an entrepreneur can use it\n\nOnce you know these 12 terms,\nyou can walk into any AI meeting,\nread any AI article,\nwatch any AI podcast\nand completely understand what is being said.\n\nYou will also be able to:\n→ Evaluate AI products more accurately\n→ Ask better questions when hiring AI talent\n→ Explain your product to investors clearly\n→ Design better AI-powered systems\n→ Avoid costly technical mistakes in your products`,
+      aiTerms:true,
+      terms:[
+        {name:"LLM",color:"#60a5fa",badge:"CORE",def:"Large Language Model — the AI brain itself. GPT-4, Claude 3, Gemini Ultra are all LLMs. Trained on trillions of words to understand and generate human language.",biz:"Every AI product you build will use an LLM as its core engine. Choose your LLM like you choose your engine."},
+        {name:"RAG",color:"#34d399",badge:"BUILD",def:"Retrieval-Augmented Generation — giving AI access to your specific documents before it answers. Instead of guessing from training data, it finds the real answer from your files.",biz:"Build a chatbot for any business that answers questions using ONLY that business's actual data. Doctors, lawyers, schools all need this."},
+        {name:"MCP",color:"#f59e0b",badge:"2026",def:"Model Context Protocol — Anthropic's open standard that lets AI connect to any external tool, database, or service through a universal interface. Like a USB port for AI integrations.",biz:"Use MCP to connect your AI to Google Drive, Slack, databases, APIs — any tool your customers already use."},
+        {name:"Fine-tuning",color:"#f87171",badge:"ADVANCED",def:"Taking an existing LLM and retraining it on your specific data so it becomes an expert in your domain. Like giving a smart person a 3-month specialist training course.",biz:"Fine-tune an AI on medical textbooks for doctors, legal cases for lawyers, or cooking recipes for a food app. Vertical AI = premium pricing."},
+        {name:"Embedding",color:"#a78bfa",badge:"TECH",def:"Converting text into a list of numbers (a vector) that represents its meaning mathematically. Allows AI to find similar concepts and meanings even when words differ.",biz:"The technology behind AI search, recommendations, and matching. Powers the 'search your documents' feature in RAG applications."},
+        {name:"Context Window",color:"#06b6d4",badge:"KEY",def:"The maximum amount of text an AI model can read and remember at one time. Measured in tokens (roughly 0.75 words per token). Bigger = can handle longer documents.",biz:"Pick LLMs with large context windows for document analysis tasks. Claude 3's context window can fit an entire book."},
+        {name:"Vector Database",color:"#10b981",badge:"BUILD",def:"A database that stores embeddings (numerical vectors) instead of normal data. Enables lightning-fast similarity search. Pinecone, Weaviate, and Chroma are popular examples.",biz:"The backbone of any RAG application. Every AI that 'searches your documents' is using a vector database behind the scenes."},
+        {name:"Hallucination",color:"#ef4444",badge:"DANGER",def:"When an AI confidently generates false, made-up information that sounds completely real. The single biggest reliability problem with current LLMs.",biz:"ALWAYS verify AI outputs before using them in any product. Use RAG to reduce hallucinations by grounding AI in real documents."},
+        {name:"Token",color:"#fbbf24",badge:"COST",def:"The unit by which AI models process and charge for text. Roughly 1 token = 0.75 English words. APIs charge per 1,000 tokens (input + output).",biz:"Understanding tokens controls your costs. Shorter, more precise prompts = fewer tokens = lower bills at scale."},
+        {name:"Inference",color:"#e879f9",badge:"TECH",def:"The actual moment when a trained AI model runs and generates a response. This is the computationally expensive step that costs money every time.",biz:"Every time a user of your app asks a question, that is one inference. Price your product to cover inference costs plus profit margin."},
+        {name:"Agentic Loop",color:"#fb923c",badge:"AGENTS",def:"The cycle an AI agent runs through: observe → think → act → observe result → think again → act again. This loop continues until the goal is achieved.",biz:"Understanding the agentic loop helps you design better agents. Each loop iteration costs money and time — optimise the loop for efficiency."},
+        {name:"System Prompt",color:"#4ade80",badge:"BUILD",def:"Hidden instructions given to an AI before the user conversation starts. Defines the AI's personality, rules, knowledge scope, and behaviour. Users never see it.",biz:"Your system prompt IS your AI product. It defines your chatbot's personality, what it knows, what it refuses, and how it responds. Guard it like your IP."}
+      ],
+      exercise:`AI TERMS MASTERY CHALLENGE\n\nStep 1: Create a Google Doc: "My AI Glossary"\nFor each of the 12 terms, write IN YOUR OWN WORDS:\n  • 1-sentence definition (no copying — restate it)\n  • Your own analogy that helps YOU remember it\n  • One startup idea that uses this technology\n\nStep 2: The Explanation Test\nRecord yourself on your phone explaining 3 terms\nto an imaginary 10-year-old. If you cannot explain it\nsimply, you do not fully understand it yet.\n\nStep 3: Apply the Terms\nGo to claude.ai and ask:\n"You are building an AI-powered homework helper app.\nDescribe the system architecture using these terms:\nLLM, RAG, Vector Database, Embeddings, System Prompt,\nContext Window, and Inference. Explain each component's\nrole in the product."\n\nRead the response carefully. You will see all 7 terms\nused in a real product context. This is how engineers\nactually think about AI product architecture.`,
+      mistakes:["Using terms to sound smart without truly understanding them — experienced people immediately notice and it damages your credibility","Ignoring MCP — it was released in late 2024 and is already transforming how AI products are built. Being fluent in MCP is a strong differentiator in 2026","Thinking these are just developer terms — every founder, product manager, and investor in AI uses these terms constantly. They are business vocabulary now","Learning terms without connecting them to business value — always ask: how does this term represent a cost, a feature, a risk, or an opportunity in my product?","Not updating your knowledge — AI terminology evolves fast. New terms like 'agentic loop' and 'MCP' did not exist 2 years ago. Follow AI news weekly."],
+      nextStep:"You now speak fluent AI. The final chapter brings it all together: the complete Entrepreneurship system that turns your AI knowledge into a real, revenue-generating company.",
+      youtube:[
+        {ch:"Andrej Karpathy",vid:"Search: 'Intro to Large Language Models' — free 1-hour masterclass, best LLM explanation ever made"},
+        {ch:"IBM Technology",vid:"Search: 'What is RAG?' and 'What is MCP?' separately — each under 5 minutes, crystal clear"},
+        {ch:"AI Explained",vid:"Search: 'Every AI Term Explained 2026' — comprehensive vocabulary breakdown with examples"}
+      ],
+      tools:[
+        {n:"Pinecone (Free tier)",u:"https://pinecone.io",d:"Leading vector database — free tier for building RAG apps"},
+        {n:"OpenAI Cookbook",u:"https://cookbook.openai.com",d:"Free official examples for every AI concept"},
+        {n:"Hugging Face (Free)",u:"https://huggingface.co",d:"Run any LLM, explore embeddings and models free"},
+        {n:"LangChain Docs (Free)",u:"https://python.langchain.com",d:"Understand LLM chains, RAG, and agents conceptually"}
+      ]
+    },
+    {
+      id:"entrepreneurship", title:"AI Entrepreneurship", icon:"🏆",
+      concept:"This is where all five weeks come together. Entrepreneurship with AI is a complete system — mindset, skills, tools, and execution. A 15-year-old with this knowledge has a genuine advantage over adults who are just starting.",
+      analogy:`Entrepreneurship is not a personality type.\nIt is a learnable system of 6 skills:\n\n1. PROBLEM FINDING: Spotting pain people pay to fix\n2. RAPID BUILDING: Creating solutions quickly and cheaply\n3. DISTRIBUTION: Getting your solution in front of people\n4. SALES: Converting interested people to paying customers\n5. RETENTION: Making people stay and come back\n6. ITERATION: Improving based on what users actually want\n\nAI changes every single one of these:\n\n🔎 Problem Finding → AI analyses market data and trends\n🔨 Building → Vibe Coding builds in days not months\n📣 Distribution → AI writes content that attracts customers\n💰 Sales → AI personalises pitches and follows up\n🔄 Retention → AI agents handle support and engagement\n📈 Iteration → AI analyses feedback and suggests improvements\n\nIn 2026, a solo 15-year-old with AI tools can do what used\nto require a 10-person team with ₹1 crore in funding.\nYou have access to that right now.\nThe only constraint is your willingness to start.`,
+      example:`THE COMPLETE ENTREPRENEUR SKILL STACK:\n\n━━━ SKILL 1: PROBLEM IDENTIFICATION ━━━━━━━━━━━━\nThe rarest and most valuable entrepreneurial skill.\nHow to find real problems:\n  → Talk to 20 people this week. Ask each:\n    "What is the most repetitive thing you do\n     at school/work that you wish was automated?"\n  → Read 1-star reviews of existing products\n    (they are a goldmine of unmet needs)\n  → Join communities where your target users talk\n    (Reddit, Discord, WhatsApp groups)\n  → Notice your OWN daily frustrations\n\n━━━ SKILL 2: RAPID VALIDATION ━━━━━━━━━━━━━━━━━━\nBefore building, prove people want it:\n  → Build a carrd.co landing page (10 minutes, free)\n  → Share it in 5 communities\n  → If 20 people sign up to a waitlist in 48 hours,\n    you have a product worth building\n  → If 2 people sign up... try a different idea\n\n━━━ SKILL 3: AI-POWERED BUILDING ━━━━━━━━━━━━━━━\n  → Build v1 with bolt.new (1-7 days)\n  → Build landing page with carrd.co (1 hour)\n  → AI writes all your marketing copy\n  → Use Make.com to automate onboarding emails\n\n━━━ SKILL 4: MONETISATION MODELS ━━━━━━━━━━━━━━━\n  A. SUBSCRIPTION — ₹199-999/month per user\n     Best for: Tools used regularly, habit-forming products\n  B. PER USE — Charge each time AI is used\n     Best for: Occasional high-value tasks (resumes, analysis)\n  C. B2B — Charge businesses ₹5,000-50,000/month\n     Best for: AI agents that save business time and money\n  D. MARKETPLACE — Take % of each transaction\n     Best for: Connecting buyers and sellers with AI matching\n  E. FREEMIUM — Free basic, paid advanced features\n     Best for: Consumer apps needing large user base first\n\n━━━ SKILL 5: DISTRIBUTION ━━━━━━━━━━━━━━━━━━━━━━\nFree channels that work for teen founders in 2026:\n  → LinkedIn daily posts about your journey (HIGHEST ROI)\n  → Reddit communities for your target users\n  → WhatsApp and Telegram groups in your niche\n  → Twitter/X technical posts about what you are building\n  → Product Hunt launch (free, huge tech audience)\n  → Cold DMs to potential customers (AI helps write them)\n\n━━━ YOUR UNFAIR ADVANTAGE AT 15 ━━━━━━━━━━━━━━━━\n✅ Zero financial responsibilities — you can take risks\n✅ More free time than any adult entrepreneur\n✅ Your age IS your story — media loves young founders\n✅ By 18, you will have 3 years of real business experience\n✅ By 20, you will know more than most 30-year-olds about AI\n✅ Investors LOVE teen founders — it signals exceptional drive`,
+      exercise:`THE COMPLETE 30-DAY AI ENTREPRENEUR SPRINT\n\nWEEK 1 — RESEARCH\n  Day 1-2: Talk to 10 people. Document every frustration.\n  Day 3-4: Research if any AI tool solves each frustration.\n  Day 5-7: Pick the one problem with NO good AI solution.\n\nWEEK 2 — VALIDATE\n  Day 8: Build landing page on carrd.co. Write 3 sentences:\n          Problem, Solution, CTA (join waitlist).\n  Day 9-10: Share in 10+ communities/groups.\n  Day 11-12: Call or voice-note everyone who signed up.\n  Day 13-14: Analyse feedback. Refine your concept.\n\nWEEK 3 — BUILD\n  Day 15-17: Build Version 1 using bolt.new\n              Describe every feature in detail.\n              Iterate until it works correctly.\n  Day 18-19: Write system prompt for your AI feature.\n              Test it 50 times. Make it reliable.\n  Day 20-21: Set up payments using Stripe (free to start).\n\nWEEK 4 — LAUNCH\n  Day 22-23: Send to all waitlist users. Watch them use it.\n  Day 24-25: Fix the top 3 issues they report.\n  Day 26-27: Launch on Product Hunt.\n              Post launch update on LinkedIn.\n  Day 28-30: Follow up with users. Ask for first payment.\n              Document everything you learned.\n\nWHAT YOU WILL HAVE AFTER 30 DAYS:\n→ A real, live, working product\n→ Real users with real feedback\n→ A public LinkedIn portfolio of your journey\n→ Genuine startup experience\n→ Potentially your first rupees of revenue\n→ The most interesting college application story imaginable`,
+      mistakes:["Perfecting before launching — done and in front of real users beats perfect and unseen. Ship ugly, improve with data.","Not talking to users — every hour spent talking to users is worth 10 hours of building. Users tell you exactly what to build next.","Giving equity too early — never give away ownership of your company before you understand what it is worth. Equity is your most valuable asset.","Working on too many ideas at once — pick one, go deep, prove it works, THEN start the next. Serial focus beats parallel distraction.","Not celebrating small wins — your first user is a miracle. Your first ₹100 of revenue is proof of concept. Celebrate these moments. They fuel the next 10 years."],
+      nextStep:"You have completed the full 5-week AI Mastery Roadmap. You now know more about AI entrepreneurship than most adults. The only next step is action. Build something. Ship it. Learn. Repeat.",
+      youtube:[
+        {ch:"Greg Isenberg",vid:"Every single video — the definitive channel for AI entrepreneurship in 2026, watch daily"},
+        {ch:"Y Combinator",vid:"Search: 'How to Start a Startup' complete playlist — free Stanford-level startup education"},
+        {ch:"Pieter Levels / Levelsio",vid:"Search his interviews — bootstrapped multiple million-dollar solo products, shows it is possible"}
+      ],
+      tools:[
+        {n:"Stripe (Free to start)",u:"https://stripe.com",d:"Accept real payments from day one — works globally"},
+        {n:"Notion (Free)",u:"https://notion.so",d:"Run your entire startup: tasks, notes, CRM, roadmap"},
+        {n:"Canva AI (Free)",u:"https://canva.com",d:"AI-powered design: logos, social posts, pitch decks"},
+        {n:"Beehiiv (Free tier)",u:"https://beehiiv.com",d:"Build an email newsletter — own your audience"}
+      ]
+    }
+  ]
+}
+];
+
+const GLOSSARY=[
+  {t:"LLM",d:"Large Language Model — AI brain (GPT, Claude, Gemini)"},
+  {t:"RAG",d:"AI that searches your docs before answering"},
+  {t:"MCP",d:"Universal protocol connecting AI to any tool"},
+  {t:"Prompt",d:"Instructions you give to an AI model"},
+  {t:"API Key",d:"Secret key connecting apps to AI power"},
+  {t:"AI Agent",d:"AI that takes autonomous actions"},
+  {t:"Multi-Agent",d:"Team of specialised AI agents"},
+  {t:"Vibe Coding",d:"Building apps in plain English"},
+  {t:"Fine-tuning",d:"Training AI on your own data"},
+  {t:"Embedding",d:"Text converted to numbers for AI search"},
+  {t:"Vector DB",d:"Database storing AI embeddings"},
+  {t:"Token",d:"Unit AI reads (~0.75 words)"},
+  {t:"Hallucination",d:"AI confidently making up false info"},
+  {t:"Context Window",d:"Max text an AI can process at once"},
+  {t:"Inference",d:"When AI runs and generates output"},
+  {t:"AGI",d:"AI matching human intelligence — almost here"},
+  {t:"ASI",d:"AI surpassing all human intelligence"},
+  {t:"System Prompt",d:"Hidden instructions that shape AI behaviour"}
+];
+
+// ═══════════════════════════════════════════════════════════
+//  STATE & RENDER
+// ═══════════════════════════════════════════════════════════
+let S={w:0,t:0,tab:"concept"};
+const TAB_DEFS=[
+  {id:"concept",l:"💡 Concept"},
+  {id:"example",l:"🔍 Example"},
+  {id:"exercise",l:"🏋️ Exercise"},
+  {id:"mistakes",l:"⚠️ Mistakes"},
+  {id:"youtube",l:"▶️ YouTube"},
+  {id:"tools",l:"🛠️ Tools"},
+  {id:"next",l:"➡️ Next Step"}
+];
+
+function init(){
+  buildGlossary();
+  buildWeekNav();
+  buildMobNav();
+  buildProgress();
+  render();
+}
+
+function buildGlossary(){
+  document.getElementById('glossaryList').innerHTML=
+    GLOSSARY.map(g=>`<div class="gls-chip"><div class="gls-term">${g.t}</div><div class="gls-def">${g.d}</div></div>`).join('');
+}
+
+function buildWeekNav(){
+  const W=WEEKS[S.w];
+  document.getElementById('weekNav').innerHTML=WEEKS.map((w,wi)=>`
+    <div class="nav-week">
+      <button class="nav-week-btn ${S.w===wi?'active':''}"
+        style="${S.w===wi?`border-left-color:${w.color};color:${w.color};background:${w.color}12`:'border-left-color:transparent'}"
+        onclick="sel(${wi},0)">
+        <span class="nav-wicon">${w.icon}</span>
+        <div><div class="nav-wlabel">${w.week}</div><div class="nav-wtitle">${w.title}</div></div>
+      </button>
+      ${S.w===wi?`<div class="nav-topics">${w.topics.map((t,ti)=>`
+        <div class="nav-topic-btn ${S.t===ti?'active':''}"
+          style="${S.t===ti?`border-left-color:${w.color}90;background:${w.color}10;color:${w.color}`:'border-left-color:transparent'}"
+          onclick="selT(${ti})">${t.icon} ${t.title}</div>
+      `).join('')}</div>`:''}
+    </div>`).join('');
+}
+
+function buildMobNav(){
+  const W=WEEKS[S.w];
+  document.getElementById('mobNav').innerHTML=`
+    ${WEEKS.map((w,wi)=>`<button class="mob-wbtn ${S.w===wi?'active':''}"
+      style="${S.w===wi?`background:${w.color}18;border-color:${w.color}50;color:${w.color}`:''}"
+      onclick="sel(${wi},0)">${w.icon} ${w.week}</button>`).join('')}
+    <span style="color:#2a2a4a;padding:0 3px;font-size:10px">│</span>
+    ${W.topics.map((t,ti)=>`<button class="mob-wbtn ${S.t===ti?'active':''}"
+      style="${S.t===ti?`background:${W.color}18;border-color:${W.color}50;color:${W.color}`:''}"
+      onclick="selT(${ti})">${t.icon} ${t.title}</button>`).join('')}`;
+}
+
+function buildProgress(){
+  const C=WEEKS[S.w].color;
+  document.getElementById('hdrProgress').innerHTML=WEEKS.map((w,i)=>`
+    <div class="hdr-prog-item">
+      <div class="hdr-prog-label">${w.week.replace('Week ','W')}</div>
+      <div class="hdr-prog-bar"><div class="hdr-prog-fill" style="background:${w.color};width:${i<=S.w?'100%':'0%'}"></div></div>
+    </div>`).join('');
+  const W=WEEKS[S.w];
+  document.getElementById('hdrBadge').textContent=`${W.week.toUpperCase()} · TOPIC ${S.t+1}/${W.topics.length}`;
+}
+
+function render(){
+  const W=WEEKS[S.w], T=W.topics[S.t], C=W.color;
+  // Topic card
+  const card=document.getElementById('topicCard');
+  card.style.background=`linear-gradient(135deg,${C}10,transparent)`;
+  card.style.border=`1px solid ${C}28`;
+  document.getElementById('tcIcon').textContent=T.icon;
+  document.getElementById('tcBreadcrumb').style.color=C;
+  document.getElementById('tcBreadcrumb').textContent=`${W.week.toUpperCase()} · ${W.title.toUpperCase()} · TOPIC ${S.t+1} OF ${W.topics.length}`;
+  document.getElementById('tcTitle').textContent=`${T.icon} ${T.title}`;
+  document.getElementById('tcConcept').textContent=T.concept;
+  // Tabs
+  document.getElementById('tabsRow').innerHTML=TAB_DEFS.map(tb=>`
+    <button class="tab-btn ${S.tab===tb.id?'active':''}"
+      style="${S.tab===tb.id?`background:${C}1a;border-color:${C}60;color:${C}`:''}"
+      onclick="setTab('${tb.id}')">${tb.l}</button>`).join('');
+  // Panel
+  renderPanel(W,T,C);
+  // Research bar
+  const rb=document.getElementById('researchBar');
+  rb.style.display=(S.w===3&&S.t===0&&S.tab==='example')?'block':'none';
+  // Scroll
+  document.getElementById('main').scrollTop=0;
+  window.scrollTo(0,document.getElementById('hdr').offsetHeight);
+}
+
+function renderPanel(W,T,C){
+  const el=document.getElementById('panel');
+  const t=S.tab;
+  if(t==='concept'){
+    el.innerHTML=`
+      <div class="panel-heading" style="color:${C}">🧠 THE ANALOGY THAT MAKES IT CLICK</div>
+      <div class="analogy" style="background:${C}08;border-left-color:${C}">${T.analogy.replace(/\n/g,'<br/>')}</div>`;
+  } else if(t==='example'){
+    if(T.aiTerms){
+      el.innerHTML=`
+        <div class="panel-heading" style="color:${C}">📖 THE 12 MOST IMPORTANT AI TERMS — Full Breakdown</div>
+        <div class="terms-grid">${T.terms.map(tr=>`
+          <div class="term-card">
+            <div class="term-name" style="color:${tr.color}">
+              ${tr.name}
+              <span class="term-badge" style="background:${tr.color}22;color:${tr.color}">${tr.badge}</span>
+            </div>
+            <div class="term-def">${tr.def}</div>
+            <div class="term-biz">💼 ${tr.biz}</div>
+          </div>`).join('')}</div>`;
+    } else {
+      el.innerHTML=`
+        <div class="panel-heading" style="color:${C}">🔍 PRACTICAL EXAMPLE — Follow Along</div>
+        <div class="example-box">${T.example}</div>`;
+    }
+  } else if(t==='exercise'){
+    el.innerHTML=`
+      <div class="panel-heading" style="color:${C}">🏋️ HANDS-ON EXERCISE — Do This Today</div>
+      <div class="exercise-box" style="background:${C}08;border:1px solid ${C}20;border-radius:10px;padding:22px">
+        ${T.exercise.replace(/\n/g,'<br/>')}
+      </div>
+      <div class="ex-meta">
+        <span>⏱️ <strong style="color:var(--text)">Time:</strong> 30–90 minutes</span>
+        <span>🎯 <strong style="color:var(--text)">Outcome:</strong> Real, shareable work product</span>
+        <span>💡 <strong style="color:var(--text)">Level:</strong> Beginner — no prior experience needed</span>
+      </div>`;
+  } else if(t==='mistakes'){
+    el.innerHTML=`
+      <div class="panel-heading" style="color:#ef4444">⚠️ COMMON MISTAKES — Avoid These</div>
+      ${T.mistakes.map(m=>`<div class="mistake-item"><span class="mx">✗</span><span>${m}</span></div>`).join('')}`;
+  } else if(t==='youtube'){
+    el.innerHTML=`
+      <div class="panel-heading" style="color:#ff4444">▶️ FREE YOUTUBE RESOURCES — Start With These</div>
+      ${T.youtube.map(y=>`<div class="yt-card">
+        <div class="yt-thumb">▶</div>
+        <div><div class="yt-ch">${y.ch}</div><div class="yt-vid">📌 ${y.vid}</div></div>
+      </div>`).join('')}`;
+  } else if(t==='tools'){
+    el.innerHTML=`
+      <div class="panel-heading" style="color:${C}">🛠️ FREE TOOLS — Start Practising Today</div>
+      <div class="tools-grid">${T.tools.map(tl=>`
+        <div class="tool-card" style="background:${C}08;border:1px solid ${C}20">
+          <div class="tool-head">
+            <span class="tool-name">${tl.n}</span>
+            <span class="free-tag" style="background:${C}22;color:${C}">FREE</span>
+          </div>
+          <div class="tool-desc">${tl.d}</div>
+          <a href="${tl.u}" target="_blank" rel="noopener" class="tool-link" style="color:${C}">Open →</a>
+        </div>`).join('')}</div>`;
+  } else if(t==='next'){
+    const hasNT=S.t<W.topics.length-1;
+    const hasNW=S.w<WEEKS.length-1;
+    const NW=hasNW?WEEKS[S.w+1]:null;
+    el.innerHTML=`
+      <div class="panel-heading" style="color:#00e5c3">➡️ YOUR NEXT STEP</div>
+      <div class="next-box">${T.nextStep}</div>
+      <div class="nav-btns">
+        ${hasNT?`<button class="navbtn" style="background:${C}18;border-color:${C}50;color:${C}" onclick="nextTopic()">Next Topic: ${W.topics[S.t+1].icon} ${W.topics[S.t+1].title} →</button>`:''}
+        ${!hasNT&&hasNW?`<button class="navbtn" style="background:${NW.color}18;border-color:${NW.color}50;color:${NW.color}" onclick="nextWeek()">${NW.icon} ${NW.week}: ${NW.title} →</button>`:''}
+        ${!hasNT&&!hasNW?`<div class="complete-card"><div class="complete-icon">🎉</div><div class="complete-title">You Have Completed the Full AI Roadmap!</div><div class="complete-sub">You now know more about AI entrepreneurship than most adults on the planet.<br/>The only next step is to BUILD something. Go open bolt.new right now.<br/><br/><strong style="color:#00e5c3">Your future company starts today.</strong></div></div>`:''}
+      </div>`;
+  }
+}
+
+function sel(wi,ti){S.w=wi;S.t=ti;S.tab='concept';buildWeekNav();buildMobNav();buildProgress();render();}
+function selT(ti){S.t=ti;S.tab='concept';buildWeekNav();buildMobNav();buildProgress();render();}
+function setTab(id){S.tab=id;render();}
+function nextTopic(){S.t++;S.tab='concept';buildWeekNav();buildMobNav();buildProgress();render();}
+function nextWeek(){S.w++;S.t=0;S.tab='concept';buildWeekNav();buildMobNav();buildProgress();render();}
+
+init();
+</script>
+</body>
+</html>
